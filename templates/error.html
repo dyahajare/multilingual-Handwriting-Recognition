@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTR - Erreur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .error-header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .error-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .error-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .error-content {
+            padding: 40px;
+        }
+
+        .error-message {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .error-details {
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .error-details h4 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .error-details ul {
+            color: #666;
+            padding-left: 20px;
+        }
+
+        .error-details li {
+            margin-bottom: 5px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+        }
+
+        .debug-info {
+            background: #f1f3f4;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #666;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .error-container {
+                margin: 10px;
+            }
+
+            .error-header {
+                padding: 30px 20px;
+            }
+
+            .error-title {
+                font-size: 1.5em;
+            }
+
+            .error-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-header">
+            <div class="error-icon">⚠️</div>
+            <h1 class="error-title">Erreur de Modèle</h1>
+        </div>
+
+        <div class="error-content">
+            <div class="error-message">
+                {{ error or "Une erreur inattendue s'est produite" }}
+            </div>
+
+            <div class="error-details">
+                <h4>🔧 Solutions possibles :</h4>
+                <ul>
+                    <li>Vérifiez que les fichiers de modèle sont présents dans le dossier <code>models/</code></li>
+                    <li>Assurez-vous que les chemins des modèles sont corrects</li>
+                    <li>Vérifiez que les modèles sont au bon format (.h5)</li>
+                    <li>Consultez les logs du serveur pour plus de détails</li>
+                </ul>
+            </div>
+
+            <div class="debug-info">
+                <strong>Structure attendue :</strong><br>
+                models/<br>
+                ├── english/<br>
+                │   └── model_final (3).h5<br>
+                └── french/<br>
+                    └── htr_prediction_model.h5
+            </div>
+
+            <a href="/" class="back-btn">🏠 Retour à l'accueil</a>
+            
+            <div style="margin-top: 20px;">
+                <a href="/debug/models" style="color: #666; text-decoration: none; font-size: 0.9em;">
+                    🔍 Voir l'état des modèles
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
